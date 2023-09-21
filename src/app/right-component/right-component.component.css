@@ -1,0 +1,265 @@
+.heading{
+
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-container{
+     width: 33%;
+}
+/* .top-container {
+  display: flex;
+  flex-wrap: wrap;
+
+ } */
+
+ .bottom-container{
+    margin-top: 0;
+    width: 100%;
+    gap: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+
+ }
+ @media  (max-width: 1123px) {
+    .bottom-container {
+      flex-wrap: wrap;
+
+    }
+    .b-card-container{
+        /* margin-right: 1rem; */
+        margin-top: 8px;
+    }
+  }
+ .b-card-container{
+    display: flex;
+    margin-top: 8px;
+ }
+
+
+.bottom-heading{
+    margin-block: 0;
+    width: 100%;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.top-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex: 0 0 calc(25% - 1rem); */
+  /* margin: 1rem; */
+  /* justify-content: center; */
+}
+
+@media (max-width: 1140px) {
+  .card-container  {
+      flex-basis: calc(33.33% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-container  {
+      flex-basis: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .card-container  {
+      flex-basis: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .card-.b-card-container{
+    margin-right: 1rem;
+    margin-top: 8px;
+}.container  {
+      flex-basis: calc(33.33% - 1rem);
+  }
+}
+
+@media (max-width: 1140px) {
+  .card-container  {
+      flex-basis: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .card-container  {
+      flex-basis: 100%;
+  }
+}
+
+
+.selected-city-div {
+  margin-top: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font:  sans-serif;
+  position: relative;
+}
+
+.cross-card {
+  position: absolute;
+  top: 10px;
+  padding: 5px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cross-card:hover {
+  background-color: #9d9d9d;
+}
+
+.selected-img-txt {
+
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.selected-image-div {
+  flex-basis: 70px; /* Set a fixed width for the image div */
+  height: 70px;
+  margin-right: 1rem;
+}
+
+.selected-image-div img {
+  height: 100%;
+}
+
+.weather-status-text p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Add a media query for small screens (e.g., screens less than 768px wide) */
+@media (max-width: 768px) {
+  .selected-image-div {
+    flex-basis: 100%; /* Full width for image div on small screens */
+    margin-right: 0;
+
+    margin-bottom: 1rem;
+  }
+
+
+}
+
+@media (max-width:768px) {
+.selected-img-txt{
+  flex-basis: 100%;
+   display: flex;
+   justify-content: space-between;
+}
+}
+
+.selected-city-humidity h4,
+.selected-city-temp h4,
+.selected-city-wind h4,
+.selected-city-visibility h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.selected-city-humidity h3,
+.selected-city-temp h3,
+.selected-city-wind h3,
+.selected-city-visibility h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+
+/*
+.selected-city-div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+*/
+.selected-card {
+  background-color: rgb(255, 255, 255,0.5);
+  border-radius: 10px;
+}
+.toggle-main-div{
+  display: flex;
+  justify-content: space-evenly;
+}
+.weather-status-bottom-div{
+  display: flex;
+  flex-wrap: wrap;
+    gap: 40px;
+    row-gap: 20px;
+  justify-content: space-between;
+}
+.leftData{
+  flex-basis: 25%;
+  align-items: center;
+}
+.rightData{
+  flex-basis: 70%;
+}
+
+.time-stamp{
+  margin-bottom: 2rem;
+}
+
+
+@media (max-width:600px) {
+  .leftData{
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+@media (max-width:600px) {
+  .rightData{
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
+.time-stamp-top{
+  display: none;
+}
+@media (max-width:500px) {
+  .time-stamp{
+    display: none;
+  }
+}
+@media (max-width:500px) {
+  .time-stamp-top{
+    display: block;
+
+  }
+}
+@media (max-width:500px) {
+  .weather-status-text{
+    display: flex;
+
+    flex-direction: column;
+  }
+}

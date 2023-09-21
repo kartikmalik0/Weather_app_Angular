@@ -1,0 +1,9 @@
+<div class="top-container">
+    <div class='main-container' *ngIf="weatherData">
+        <div class="component-container">
+            <div class="left-container"><app-left-component  (getCityEvent)="getCity($event)"  ></app-left-component></div>
+            <div class="right-container"><app-right-component></app-right-component></div>
+        </div>
+    </div>
+
+  </div>

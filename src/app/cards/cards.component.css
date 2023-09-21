@@ -1,0 +1,36 @@
+.top-container{
+    display: flex;
+}
+.container {
+    padding-inline: 0.8rem;
+    padding-block: 0.2rem;
+    background: rgb(255, 255, 255, 0.3);
+
+
+    /* flex-direction: column; */
+    border-radius: 10px;
+    /* justify-content: center; */
+    margin-right: 10px;
+    margin-bottom: 20px;
+
+}
+
+.top-text{
+   padding-block: 0.3rem;
+}
+.top-text h3{
+    font-size: 23px;
+
+}
+.mid-text{
+    padding-block: 0.1rem ;
+
+}
+.mid-text h1{
+    font-size: clamp(4vh , 5vh , 6vh) ;
+}
+.bottom-text{
+    padding-block: 0.8rem;
+    font-weight: 800;
+    font-size: larger;
+}

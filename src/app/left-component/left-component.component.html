@@ -1,0 +1,118 @@
+<div class="container">
+
+  <div class="input-container">
+   <div style="display: flex;">
+    <i id="search" style="font-size: 15px; color: rgb(34, 33, 33); cursor: pointer; "
+    class="fa-solid fa-magnifying-glass " (click)="setCity(cityName)"></i>
+  <form>
+    <input name="cityName" type="text" placeholder="search for places..." [(ngModel)]="cityName"
+      (keyup.enter)="setCity(cityName)">
+  </form>
+   </div>
+    <div>
+      <i *ngIf="!weatherData.isLoading" id="delete" style="color: rgb(56, 55, 55); font-size: 20px; cursor: pointer;" class="fa-solid fa-circle-xmark"
+      (click)="clearCity()"></i>
+      <div *ngIf="weatherData.isLoading" class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <div class="cityName">
+    <p>Showing Data of : </p>
+    <h5> "{{weatherData.leftData.name}}"</h5>
+  </div>
+  <!-- change imgae according to weather -->
+  <div class="weather-status">
+
+
+    <div class="main-img-div">
+      <div class="weather-image-div">
+      <div class="image-container" *ngIf="weatherData.leftData.weather_status==='Clear'">
+        <img src="../../assets/sun-48197.png" alt="img">
+      </div>
+    </div>
+    <div class="image-container" *ngIf="weatherData.leftData.weather_status==='Clouds'">
+      <img src="../../assets/cloudy.png" alt="img">
+    </div>
+    <div class="image-container" *ngIf="weatherData.leftData.weather_status==='Rain'">
+      <img src="../../assets/heavy-rain.png" alt="img">
+    </div>
+    </div>
+
+
+
+    <div class="temp-day-div">
+      <div class="temp-container">
+        <h2 *ngIf="!weatherData.leftData">Loading...</h2>
+        <h2 *ngIf="weatherData.leftData">{{weatherData.leftData.temp}}°C</h2>
+      </div>
+      <div class="day-container">
+        <h3 *ngIf="!weatherData.leftData">Loading....</h3>
+        <h3 *ngIf="weatherData.leftData">{{ weatherData.leftData.day * 1000 | date:'EEEE':'UTC' }}</h3>
+        <h3> </h3>
+      </div>
+
+
+
+      <div class="weather-status-div">
+        <div class="weather-status-img" *ngIf="weatherData.leftData.weather_status=='Clouds'">
+          <img src="../../assets/cloudy.png" alt="x">
+        </div>
+        <div class="weather-status-img" *ngIf="weatherData.leftData.weather_status=='Clear'">
+          <img src="../../assets/sun-48197.png" alt="x">
+        </div>
+        <div class="weather-status-img" *ngIf="weatherData.leftData.weather_status=='Rain'">
+          <img src="../../assets/heavy-rain.png" alt="x">
+        </div>
+        <div class="weather-status-text">
+          <p *ngIf="!weatherData.leftData">Loading...</p>
+          <p *ngIf="weatherData.leftData">{{weatherData.leftData.weather_status}}</p>
+        </div>
+      </div>
+      <div class="weather-status-div2">
+        <div>
+          Humidity
+        </div>
+        <div class="weather-status-text">
+          - {{weatherData.leftData.humidity}}%
+        </div>
+      </div>
+      <div class="weather-status-div2">
+        <div>
+          Visibility
+        </div>
+        <div class="weather-status-text">
+          - {{weatherData.leftData.visibility}}km
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+  <div class="digital-clock">
+    <div class="clock">
+     <h1> {{hour}}:</h1>
+
+
+     <h1>{{minute}}:</h1>
+
+
+     <h1> {{second}}</h1>
+
+    <p> {{ampm}}</p>
+    </div>
+
+ </div>
+
+
+
+</div>

@@ -1,0 +1,14 @@
+.mid-img img{
+    height:30px ;
+}
+.t-text h3{
+    font-size: 20px;
+}
+.container{
+
+
+    width: 8rem;
+    border-radius: 10px;
+    padding-block: 0.4rem;
+    background-color: rgb(255, 255, 255,0.2);
+}

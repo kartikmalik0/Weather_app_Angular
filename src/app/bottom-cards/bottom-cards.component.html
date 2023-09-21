@@ -1,0 +1,29 @@
+
+    <div class="container" style="cursor: pointer;">
+        <div class="t-text">
+            <h3>{{day}}</h3>
+        </div>
+        <div class="mid-img" *ngIf="staus=='Rain'">
+            <img src="../../assets/heavy-rain.png" alt="">
+        </div>
+        <div class="mid-img" *ngIf="staus=='Clear'">
+          <img src="../../assets/sun-48197.png" alt="">
+      </div>
+      <div class="mid-img" *ngIf="staus=='Clouds'">
+        <img src="../../assets/cloudy.png" alt="">
+    </div>
+        <div class="b-text">
+            <h3 >{{temp}}°C</h3>
+        </div>
+        <div>
+            <p style="font-size: 12px;">{{staus}}</p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+

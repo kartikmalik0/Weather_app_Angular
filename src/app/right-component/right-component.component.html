@@ -1,0 +1,170 @@
+<div class="main-container">
+    <h1 style="color: rgb(231, 219, 219); font-weight: 300; font-size: 32px;" class="heading">Today's Highlight</h1>
+    <div class="top-container">
+        <div class="card-container" >
+          <app-cards [topText]="'Wind Speed'"
+           [midText]="weatherData.rightData.windSpeed"
+           [lastText]="'km/h'"
+           [status]="weatherData.rightData.windSpeed < 10 ? 'Normal': weatherData.rightData.windSpeed < 20 ? 'Moderate': 'Strong'"
+           >
+          </app-cards>
+        </div>
+        <div class="card-container">
+          <app-cards [topText]="'Humidity'"
+           [midText]="weatherData.rightData.humidity"
+            [lastText]="'%'"
+            [status]="weatherData.rightData.humidity < 60 ? 'Noraml': weatherData.rightData.humidity < 80 ? 'Moderate' : 'Harmful'"
+            >
+          </app-cards>
+        </div>
+        <div class="card-container">
+          <app-cards [topText]="'Visibility'"
+           [midText]="weatherData.rightData.visibility"
+           [lastText]="'km'"
+           [status]="weatherData.rightData.visibility<=10?'Normal' : weatherData.rightData.visibility < 5 ?'Moderate' : 'Harmful' "
+           >
+          </app-cards>
+        </div>
+        <div class="card-container">
+          <app-cards [topText]="'Max-temp.'"
+           [midText]="weatherData.rightData.temp_max"
+            [lastText]="'°C'"
+            [status]="weatherData.rightData.temp_max <=30?'Normal' : weatherData.rightData.temp_max < 37 ?'Moderate' : 'Harmful' "
+            >
+          </app-cards>
+        </div>
+        <div class="card-container">
+          <app-cards [topText]="'Sunset'"
+           [midText]="weatherData.rightData.sunset"
+           [status]="'Noraml'"
+            >
+          </app-cards>
+        </div>
+        <div class="card-container">
+          <app-cards [topText]="'Sunrise'"
+           [midText]="weatherData.rightData.sunrise"
+           [status]="'Noraml'"
+           >
+          </app-cards>
+        </div>
+
+    </div>
+    <h1 class="bottom-heading">Weekly Update</h1>
+
+    <div class="bottom-container">
+      <div class="b-card-container" *ngFor="let data of weatherData.rightData.right_bottom;">
+        <ng-container>
+          <div (click)="printId(data)" [class.selected-card]=" openOneDayCard && clickedItemData==data">
+            <app-bottom-cards
+              [day]="data.dt * 1000 | date:'EEEE':'UTC'"
+              [temp]="data.main.temp"
+              [staus]="data.weather[0].main"
+            ></app-bottom-cards>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- selected city div -->
+          <div class="toggle-main-div selected-city-div"  *ngIf="openOneDayCard">
+            <i class="fa-solid fa-xmark cross-card" (click)="closeOneDayCard()" [class.selected-card]="" ></i>
+            <div class="leftData">
+              <div class="left-image">
+                <div class="selected-img-txt">
+                  <div class="selected-image-div" *ngIf="clickedItemData.weather[0].main=='Clouds'">
+                    <img src="../../assets/cloudy.png" alt="">
+                  </div>
+                  <div class="selected-image-div" *ngIf="clickedItemData.weather[0].main=='Rain'">
+                    <img src="../../assets/heavy-rain.png" alt="">
+                  </div>
+                  <div class="selected-image-div" *ngIf="clickedItemData.weather[0].main=='Clear'">
+                    <img src="../../assets/sun-48197.png" alt="">
+                  </div>
+              </div>
+            </div>
+            <div class="weather-status-text">
+              <div class="time-stamp-top">
+                {{clickedItemData.dt_txt.slice(0,10)}}
+              </div>
+              <p>{{clickedItemData.weather[0].main}}</p>
+            </div>
+          </div>
+
+          <div class="rightData">
+            <div class="time-stamp">
+              {{clickedItemData.dt_txt.slice(0,10)}}
+            </div>
+            <div class="weather-status-bottom-div">
+              <div class="selected-city-humidity">
+              <h4>Humidity</h4>
+              <h3>{{clickedItemData.main.humidity}}%</h3>
+            </div>
+            <div class="selected-city-temp">
+              <h4>Temp.</h4>
+              <h3>{{clickedItemData.main.temp}}C</h3>
+            </div>
+            <div class="selected-city-temp">
+              <h4>Wind Speed</h4>
+              <h3>{{clickedItemData.wind.speed}}km/h</h3>
+            </div>
+            <div class="selected-city-temp">
+              <h4>Visibility</h4>
+              <h3>{{clickedItemData.visibility / 1000}}km</h3>
+            </div>
+            </div>
+          </div>
+
+    <!-- Display the clicked data -->
+  </div>
+
+  <!-- <div class="selected-city-div" *ngIf="openOneDayCard">
+    <i class="fa-solid fa-xmark cross-card" (click)="closeOneDayCard()" [class.selected-card]="" ></i>
+    <div class="leftData">
+      <div class="left-image">
+        <div class="selected-img-txt">
+          <div class="selected-image-div" *ngIf="clickedItemData.weather[0].main=='Clouds'">
+            <img src="../../assets/cloudy.png" alt="">
+          </div>
+          <div class="selected-image-div" *ngIf="clickedItemData.weather[0].main=='Rain'">
+            <img src="../../assets/heavy-rain.png" alt="">
+          </div>
+          <div class="selected-image-div" *ngIf="clickedItemData.weather[0].main=='Clear'">
+            <img src="../../assets/sun-48197.png" alt="">
+          </div>
+      </div>
+        <div class="weather-status-text">
+          <p>{{clickedItemData.weather[0].main}}</p>
+        </div>
+        <div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="rightData">
+      <div style="width: 100%;">
+        {{clickedItemData.dt_txt.slice(0,10)}}
+      </div>
+      <div class="weather-status-bottom-div">
+        <div class="selected-city-humidity">
+        <h4>Humidity</h4>
+        <h3>{{clickedItemData.main.humidity}}%</h3>
+      </div>
+      <div class="selected-city-temp">
+        <h4>Temp.</h4>
+        <h3>{{clickedItemData.main.temp}}C</h3>
+      </div>
+      <div class="selected-city-temp">
+        <h4>Wind Speed</h4>
+        <h3>{{clickedItemData.wind.speed}}km/h</h3>
+      </div>
+      <div class="selected-city-temp">
+        <h4>Visibility</h4>
+        <h3>{{clickedItemData.visibility / 1000}}km</h3>
+      </div>
+      </div>
+    </div>-->
+
+
+  </div>
